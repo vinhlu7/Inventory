@@ -1,17 +1,28 @@
 package com.example.inventory;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 
 public class MainActivity extends Activity {
 
+	private Button addButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        addButton = (Button) findViewById(R.id.addButton);
+        addButton.setOnClickListener(new View.OnClickListener(){
+        	public void onClick(View v) {
+        		Intent i = new Intent(getApplicationContext(), AddItemActivity.class);
+        		startActivity(i);
+        	}
+        });
     }
 
 
@@ -33,4 +44,5 @@ public class MainActivity extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
+    
 }

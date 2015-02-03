@@ -6,5 +6,8 @@
     <string name="Add">Add</string>
     <string name="Delete">Delete</string>
     <string name="View">View</string>
+    <string name="addNameHint">Pencil</string>
+    <string name="addAmountHint">7</string>
+    <string name="addComplete">Add</string>
 
 </resources>

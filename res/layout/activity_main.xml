@@ -9,7 +9,7 @@
     tools:context="com.example.inventory.MainActivity" >
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/addButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -18,19 +18,19 @@
         android:text="@string/Add" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/deleteButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button1"
+        android:layout_below="@+id/addButton"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="34dp"
         android:text="@string/Delete" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/viewButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button2"
+        android:layout_below="@+id/deleteButton"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="42dp"
         android:text="@string/View" />
