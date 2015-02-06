@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class AddItemActivity extends Activity{
 	
@@ -29,8 +30,14 @@ public class AddItemActivity extends Activity{
         			//Integer.parseInt(itemQuantity.getText().toString()) != " "
         			Log.d("before new item obj","no");
         			Items anItem = new Items(itemName.getText().toString(),Integer.parseInt(itemQuantity.getText().toString()));
-        			itemsDb.insertItem(anItem);
-        			Log.d("after insertItem()", anItem.toString());
+        			if(itemsDb.insertItem(anItem)){
+        				Toast.makeText(getApplicationContext(),"Add Successful.", Toast.LENGTH_LONG).show();
+        			}else{
+        				Toast.makeText(getApplicationContext(),"Add failed. Please try again.", Toast.LENGTH_LONG).show();
+        			}
+        			itemName.setText("");
+        			itemQuantity.setText("");
+
         		//}
         		
         	}

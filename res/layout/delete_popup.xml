@@ -30,13 +30,13 @@
         android:text="@string/Delete" />
 
     <Button
-        android:id="@+id/cancelButton"
+        android:id="@+id/backButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/deleteInPopup"
         android:layout_alignBottom="@+id/deleteInPopup"
         android:layout_marginLeft="16dp"
         android:layout_toRightOf="@+id/deleteInPopup"
-        android:text="Cancel" />
+        android:text="Back" />
 
 </RelativeLayout>

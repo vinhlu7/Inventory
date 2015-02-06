@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.PopupWindow;
+import android.widget.Toast;
 
 public class MainActivity extends Activity implements OnClickListener {
 
@@ -60,7 +61,7 @@ public class MainActivity extends Activity implements OnClickListener {
 			Log.d("deleteButton", "delete button");
 			startPopup();
 			break;
-		case R.id.cancelButton:
+		case R.id.backButton:
 			Log.d("cancelButton", "cancel button");
 			popupWindow.dismiss();
 			break;
@@ -68,8 +69,12 @@ public class MainActivity extends Activity implements OnClickListener {
 			Log.d("deleteInPopup", "deleteInPopup");
 			final RunDatabaseHelper itemsDb = new RunDatabaseHelper(this);
 			Items anItem = new Items(deleteItemName.getText().toString(),7);
-			System.out.println("lol is: " + itemsDb.getId(anItem));
-			itemsDb.deleteItem(anItem);
+			if(itemsDb.deleteItem(anItem)){
+				Toast.makeText(getApplicationContext(),"Delete Successful.", Toast.LENGTH_LONG).show();
+			}else{
+				Toast.makeText(getApplicationContext(),"Item does not exist.", Toast.LENGTH_LONG).show();
+			}
+			deleteItemName.setText("");
 			break;
 		default:
 			throw new RuntimeException("Invalid button");
@@ -86,7 +91,7 @@ public class MainActivity extends Activity implements OnClickListener {
 			popupWindow = new PopupWindow(layout, 600, 650, true);
 			popupWindow.showAtLocation(layout, Gravity.CENTER, 0, 0);
 
-			cancelButton = (Button) layout.findViewById(R.id.cancelButton);
+			cancelButton = (Button) layout.findViewById(R.id.backButton);
 			deleteInPopup = (Button) layout.findViewById(R.id.deleteInPopup);
 			deleteItemName = (EditText) layout.findViewById(R.id.deleteItemName);
 			

@@ -41,14 +41,18 @@ public class RunDatabaseHelper extends SQLiteOpenHelper {
 		this.onCreate(db);
 	}
 
-	public void insertItem(Items item) {
+	public boolean insertItem(Items item) {
+		boolean success = false;
 		SQLiteDatabase db = this.getWritableDatabase();
 		ContentValues cv = new ContentValues();
 		cv.put(COLUMN_ITEMS_NAME, item.getItemName());
 		cv.put(COLUMN_ITEMS_QUANTITY, item.getItemQuantity());
-		db.insert(TABLE_ITEMS, null, cv);
-		db.close();
-		Log.d("insertItem()", item.toString());
+		if (db.insert(TABLE_ITEMS, null, cv) > 0) {
+			db.close();
+			Log.d("insertItem()", item.toString());
+			success = true;
+		}
+		return success;
 	}
 
 	public Items getItem(int id) {
@@ -74,17 +78,19 @@ public class RunDatabaseHelper extends SQLiteOpenHelper {
 		SQLiteDatabase db = this.getReadableDatabase();
 		Cursor cursor = db.query(TABLE_ITEMS, COLUMNS, " name = ?",
 				new String[] { item.getItemName() }, null, null, null, null);
-		
-		if (cursor != null)
+
+		if (cursor != null) {
 			cursor.moveToFirst();
 
-		Items itemFound = new Items();
-		itemFound.setId(Integer.parseInt(cursor.getString(0)));
+			Items itemFound = new Items();
+			itemFound.setId(Integer.parseInt(cursor.getString(0)));
 
-		Log.d("getId()", item.toString());
+			Log.d("getId()", item.toString());
 
-		return itemFound.getId();
-
+			return itemFound.getId();
+		} else {
+			return 0;
+		}
 	}
 
 	public List<Items> getAllItems() {
@@ -125,15 +131,17 @@ public class RunDatabaseHelper extends SQLiteOpenHelper {
 		return updatedRows;
 	}
 
-	public void deleteItem(Items item) {
-		SQLiteDatabase db = this.getWritableDatabase(); // COLUMN_ITEMS_ID +
-														// " = ?"
-		// db.delete(TABLE_ITEMS, COLUMN_ITEMS_ID + " = ?", //COLUMN_ITEMS_ID +
-		// "=" + item.getId()
-		// new String[] { String.valueOf(item.getId()) });
-		db.delete(TABLE_ITEMS, COLUMN_ITEMS_ID + "=" + getId(item), null);
-		db.close();
-		Log.d("deleteItem", item.toString());
+	public boolean deleteItem(Items item) {
+		boolean deleted = false;
+		SQLiteDatabase db = this.getWritableDatabase();
+		if (getId(item) > 0) {
+			db.delete(TABLE_ITEMS, COLUMN_ITEMS_ID + " = ?",
+					new String[] { String.valueOf(getId(item)) });
+			deleted = true;
+			db.close();
+			Log.d("deleteItem", item.toString());
+		}
+		return deleted;
 	}
 
 	public ArrayList<Cursor> getData(String Query) {

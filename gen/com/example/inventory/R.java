@@ -28,7 +28,7 @@ public final class R {
         public static final int action_settings=0x7f08000c;
         public static final int addButton=0x7f080005;
         public static final int addComplete=0x7f080004;
-        public static final int cancelButton=0x7f08000b;
+        public static final int backButton=0x7f08000b;
         public static final int deleteButton=0x7f080006;
         public static final int deleteInPopup=0x7f08000a;
         public static final int deleteItemName=0x7f080009;
