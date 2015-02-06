@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/popup_element"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#444444"
+    android:orientation="horizontal"
+    android:padding="10sp" >
+
+    <EditText
+        android:id="@+id/deleteItemName"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="99dp"
+        android:ems="10"
+        android:hint="@string/addNameHint"
+        android:inputType="textCapWords"
+        android:singleLine="true" />
+
+    <Button
+        android:id="@+id/deleteInPopup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/deleteItemName"
+        android:layout_below="@+id/deleteItemName"
+        android:layout_marginLeft="59dp"
+        android:layout_marginTop="100dp"
+        android:text="@string/Delete" />
+
+    <Button
+        android:id="@+id/cancelButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/deleteInPopup"
+        android:layout_alignBottom="@+id/deleteInPopup"
+        android:layout_marginLeft="16dp"
+        android:layout_toRightOf="@+id/deleteInPopup"
+        android:text="Cancel" />
+
+</RelativeLayout>
