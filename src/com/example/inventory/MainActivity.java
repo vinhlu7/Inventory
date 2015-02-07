@@ -21,6 +21,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
 	private Button addButton;
 	private Button viewButton;
+	private Button viewTest;
 	private Button deleteButton;
 	private Button cancelButton;
 	private Button deleteInPopup;
@@ -31,13 +32,15 @@ public class MainActivity extends Activity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
+
 		addButton = (Button) findViewById(R.id.addButton);
 		viewButton = (Button) findViewById(R.id.viewButton);
+		viewTest = (Button) findViewById(R.id.viewTest);
 		deleteButton = (Button) findViewById(R.id.deleteButton);
-		
+
 		addButton.setOnClickListener(this);
 		viewButton.setOnClickListener(this);
+		viewTest.setOnClickListener(this);
 		deleteButton.setOnClickListener(this);
 	}
 
@@ -57,6 +60,12 @@ public class MainActivity extends Activity implements OnClickListener {
 			// ViewItemActivity.class);
 			startActivity(intent2);
 			break;
+		case R.id.viewTest:
+			Log.d("2nd view buton", "2nd view button");
+			Intent intent3 = new Intent(getApplicationContext(),
+			ViewItemActivity.class);
+			startActivity(intent3);
+			break;
 		case R.id.deleteButton:
 			Log.d("deleteButton", "delete button");
 			startPopup();
@@ -67,12 +76,15 @@ public class MainActivity extends Activity implements OnClickListener {
 			break;
 		case R.id.deleteInPopup:
 			Log.d("deleteInPopup", "deleteInPopup");
-			final RunDatabaseHelper itemsDb = new RunDatabaseHelper(this,null,null,1);
-			Items anItem = new Items(deleteItemName.getText().toString(),7);
-			if(itemsDb.deleteItem(anItem)){
-				Toast.makeText(getApplicationContext(),"Delete Successful.", Toast.LENGTH_LONG).show();
-			}else{
-				Toast.makeText(getApplicationContext(),"Item does not exist.", Toast.LENGTH_LONG).show();
+			final RunDatabaseHelper itemsDb = new RunDatabaseHelper(this, null,
+					null, 1);
+			Items anItem = new Items(deleteItemName.getText().toString(), 7);
+			if (itemsDb.deleteItem(anItem)) {
+				Toast.makeText(getApplicationContext(), "Delete Successful.",
+						Toast.LENGTH_LONG).show();
+			} else {
+				Toast.makeText(getApplicationContext(), "Item does not exist.",
+						Toast.LENGTH_LONG).show();
 			}
 			deleteItemName.setText("");
 			break;
@@ -93,8 +105,9 @@ public class MainActivity extends Activity implements OnClickListener {
 
 			cancelButton = (Button) layout.findViewById(R.id.backButton);
 			deleteInPopup = (Button) layout.findViewById(R.id.deleteInPopup);
-			deleteItemName = (EditText) layout.findViewById(R.id.deleteItemName);
-			
+			deleteItemName = (EditText) layout
+					.findViewById(R.id.deleteItemName);
+
 			cancelButton.setOnClickListener(this);
 			deleteInPopup.setOnClickListener(this);
 

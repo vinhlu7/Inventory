@@ -110,7 +110,6 @@ public class RunDatabaseHelper extends SQLiteOpenHelper {
 
 			return itemFound.getId();
 		} else {
-			Log.d("getId()", "cursor is null");
 			return 0;
 		}
 	}
@@ -118,9 +117,10 @@ public class RunDatabaseHelper extends SQLiteOpenHelper {
 	public List<Items> getAllItems() {
 		List<Items> itemsList = new LinkedList<Items>();
 
-		String query = "SELECT * FROM " + TABLE_ITEMS;
-		SQLiteDatabase db = this.getWritableDatabase();
-		Cursor cursor = db.rawQuery(query, null);
+		//String query = "SELECT * FROM " + TABLE_ITEMS;
+		//SQLiteDatabase db = this.getWritableDatabase();
+		//Cursor cursor = db.rawQuery(query, null);
+		Cursor cursor = myCr.query(MyContentProvider.CONTENT_URI, COLUMNS, null, null, null);
 
 		Items itemInstant = null;
 		if (cursor.moveToFirst()) {
@@ -155,7 +155,6 @@ public class RunDatabaseHelper extends SQLiteOpenHelper {
 
 	public boolean deleteItem(Items item) {
 		boolean deleted = false;
-		Log.d("deleteItem", "after boolean delete");
 		// SQLiteDatabase db = this.getWritableDatabase();
 		/*
 		 * if (getId(item) > 0) { db.delete(TABLE_ITEMS, COLUMN_ITEMS_ID +
