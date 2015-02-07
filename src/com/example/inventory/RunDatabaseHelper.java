@@ -54,7 +54,7 @@ public class RunDatabaseHelper extends SQLiteOpenHelper {
 
 	public boolean insertItem(Items item) {
 		boolean success = false;
-		//SQLiteDatabase db = this.getWritableDatabase();
+		// SQLiteDatabase db = this.getWritableDatabase();
 		ContentValues cv = new ContentValues();
 		cv.put(COLUMN_ITEMS_NAME, item.getItemName());
 		cv.put(COLUMN_ITEMS_QUANTITY, item.getItemQuantity());
@@ -64,7 +64,7 @@ public class RunDatabaseHelper extends SQLiteOpenHelper {
 		// success = true;
 		// }
 		myCr.insert(MyContentProvider.CONTENT_URI, cv);
-		//db.close();
+		// db.close();
 		Log.d("insertItem()", item.toString());
 		success = true;
 
@@ -72,10 +72,12 @@ public class RunDatabaseHelper extends SQLiteOpenHelper {
 	}
 
 	public Items getItem(int id) {
-		SQLiteDatabase db = this.getReadableDatabase();
-		Cursor cursor = db.query(TABLE_ITEMS, COLUMNS, " id = ?",
-				new String[] { String.valueOf(id) }, null, null, null, null);
+		// SQLiteDatabase db = this.getReadableDatabase();
+		// Cursor cursor = db.query(TABLE_ITEMS, COLUMNS, " id = ?",
+		// new String[] { String.valueOf(id) }, null, null, null, null);
 
+		Cursor cursor = myCr.query(MyContentProvider.CONTENT_URI, COLUMNS,
+				" _id = ?", new String[] { String.valueOf(id) }, null);
 		// 3. if we got results get the first one
 		if (cursor != null)
 			cursor.moveToFirst();
@@ -91,11 +93,14 @@ public class RunDatabaseHelper extends SQLiteOpenHelper {
 	}
 
 	public int getId(Items item) {
-		SQLiteDatabase db = this.getReadableDatabase();
-		Cursor cursor = db.query(TABLE_ITEMS, COLUMNS, " name = ?",
-				new String[] { item.getItemName() }, null, null, null, null);
-
-		if (cursor != null) {
+		//SQLiteDatabase db = this.getReadableDatabase();
+		//Cursor cursor = db.query(TABLE_ITEMS, COLUMNS, " name = ?",
+			//	new String[] { item.getItemName() }, null, null, null, null);
+		
+		Cursor cursor = myCr.query(MyContentProvider.CONTENT_URI, COLUMNS,
+				" _id = ?", new String[] { item.getItemName() }, null);
+		
+		if (cursor != null && cursor.getCount() != 0) {
 			cursor.moveToFirst();
 
 			Items itemFound = new Items();
@@ -105,6 +110,7 @@ public class RunDatabaseHelper extends SQLiteOpenHelper {
 
 			return itemFound.getId();
 		} else {
+			Log.d("getId()", "cursor is null");
 			return 0;
 		}
 	}
@@ -149,13 +155,20 @@ public class RunDatabaseHelper extends SQLiteOpenHelper {
 
 	public boolean deleteItem(Items item) {
 		boolean deleted = false;
-		SQLiteDatabase db = this.getWritableDatabase();
+		Log.d("deleteItem", "after boolean delete");
+		// SQLiteDatabase db = this.getWritableDatabase();
+		/*
+		 * if (getId(item) > 0) { db.delete(TABLE_ITEMS, COLUMN_ITEMS_ID +
+		 * " = ?", new String[] { String.valueOf(getId(item)) }); deleted =
+		 * true; db.close(); Log.d("deleteItem", item.toString()); }
+		 */
+		//System.out.println("id is: " + getId(item));
 		if (getId(item) > 0) {
-			db.delete(TABLE_ITEMS, COLUMN_ITEMS_ID + " = ?",
+			Log.d("delete", "delete in if");
+			myCr.delete(MyContentProvider.CONTENT_URI,
+					COLUMN_ITEMS_ID + " = ?",
 					new String[] { String.valueOf(getId(item)) });
 			deleted = true;
-			db.close();
-			Log.d("deleteItem", item.toString());
 		}
 		return deleted;
 	}
