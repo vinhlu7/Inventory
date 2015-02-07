@@ -18,7 +18,7 @@ public class AddItemActivity extends Activity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
-        final RunDatabaseHelper itemsDb = new RunDatabaseHelper(this);
+        final RunDatabaseHelper itemsDb = new RunDatabaseHelper(this,null,null,1);
         addComplete = (Button) findViewById(R.id.addComplete);
         itemName = (EditText) findViewById(R.id.newItemName);
         itemQuantity = (EditText) findViewById(R.id.newItemAmount);

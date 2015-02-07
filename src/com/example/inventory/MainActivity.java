@@ -67,7 +67,7 @@ public class MainActivity extends Activity implements OnClickListener {
 			break;
 		case R.id.deleteInPopup:
 			Log.d("deleteInPopup", "deleteInPopup");
-			final RunDatabaseHelper itemsDb = new RunDatabaseHelper(this);
+			final RunDatabaseHelper itemsDb = new RunDatabaseHelper(this,null,null,1);
 			Items anItem = new Items(deleteItemName.getText().toString(),7);
 			if(itemsDb.deleteItem(anItem)){
 				Toast.makeText(getApplicationContext(),"Delete Successful.", Toast.LENGTH_LONG).show();

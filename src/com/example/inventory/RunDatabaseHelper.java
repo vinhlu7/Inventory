@@ -4,28 +4,39 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.MatrixCursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 public class RunDatabaseHelper extends SQLiteOpenHelper {
+
+	private ContentResolver myCr;
+
 	private static final String DB_NAME = "items.sqlite";
 	private static final int VERSION = 1;
 
-	private static final String TABLE_ITEMS = "items";
-	private static final String COLUMN_ITEMS_ID = "_id";
+	public static final String TABLE_ITEMS = "items";
+	public static final String COLUMN_ITEMS_ID = "_id";
 	private static final String COLUMN_ITEMS_NAME = "name";
 	private static final String COLUMN_ITEMS_QUANTITY = "quantity";
 	private static final String[] COLUMNS = { COLUMN_ITEMS_ID,
 			COLUMN_ITEMS_NAME, COLUMN_ITEMS_QUANTITY };
 
-	public RunDatabaseHelper(Context context) {
-		super(context, DB_NAME, null, VERSION);
+	// public RunDatabaseHelper(Context context) { //before content provider
+	// super(context, DB_NAME, null, VERSION);
+	// }
+
+	public RunDatabaseHelper(Context context, String name,
+			CursorFactory factory, int version) {
+		super(context, DB_NAME, factory, VERSION);
+		myCr = context.getContentResolver();
 	}
 
 	@Override
@@ -43,15 +54,20 @@ public class RunDatabaseHelper extends SQLiteOpenHelper {
 
 	public boolean insertItem(Items item) {
 		boolean success = false;
-		SQLiteDatabase db = this.getWritableDatabase();
+		//SQLiteDatabase db = this.getWritableDatabase();
 		ContentValues cv = new ContentValues();
 		cv.put(COLUMN_ITEMS_NAME, item.getItemName());
 		cv.put(COLUMN_ITEMS_QUANTITY, item.getItemQuantity());
-		if (db.insert(TABLE_ITEMS, null, cv) > 0) {
-			db.close();
-			Log.d("insertItem()", item.toString());
-			success = true;
-		}
+		// if (db.insert(TABLE_ITEMS, null, cv) > 0) {
+		// db.close();
+		// Log.d("insertItem()", item.toString());
+		// success = true;
+		// }
+		myCr.insert(MyContentProvider.CONTENT_URI, cv);
+		//db.close();
+		Log.d("insertItem()", item.toString());
+		success = true;
+
 		return success;
 	}
 

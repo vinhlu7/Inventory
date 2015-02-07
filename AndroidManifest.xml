@@ -31,6 +31,10 @@
         <activity
             android:name=".AndroidDatabaseManager"
             android:label="@string/app_name" />
+
+        <provider
+            android:name="com.example.inventory.MyContentProvider"
+            android:authorities="com.example.inventory.MyContentProvider" />
     </application>
 
 </manifest>
