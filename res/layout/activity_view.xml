@@ -1,13 +1,34 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
-    <TextView
-        android:id="@+id/res"
+
+    <ListView
+        android:id="@android:id/list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:clickable="false"
-        android:ems="10" >
-    </TextView>
-</LinearLayout>
+        android:layout_below="@+id/header" >
+    </ListView>
+
+    <TextView
+        android:id="@+id/header"
+        android:layout_width="50dip"
+        android:layout_height="20dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="#9A9494"
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/headerQuantity"
+        android:layout_width="70dip"
+        android:layout_height="20dp"
+        android:layout_above="@android:id/list"
+        android:layout_marginLeft="35dp"
+        android:layout_toRightOf="@+id/header"
+        android:background="#9A9494"
+        android:text="text"
+        android:textColor="#000000" />
+
+</RelativeLayout>
