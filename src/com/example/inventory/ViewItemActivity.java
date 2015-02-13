@@ -79,6 +79,7 @@ public class ViewItemActivity extends ListActivity implements
 			map = new HashMap<String, String>();
 			map.put("name", cursor.getString(1));
 			map.put("quantity", cursor.getString(2));
+			map.put("update_time", cursor.getString(3));
 			allItemsList.add(map);
 			//adapter.notifyDataSetChanged();
 			cursor.moveToNext();
@@ -86,8 +87,8 @@ public class ViewItemActivity extends ListActivity implements
 		// resultView.setText(res);
 		// setListAdapter(adapter);
 		simpleAdapter = new SimpleAdapter(this, allItemsList, R.layout.view_item,
-				new String[] { "name", "quantity" }, new int[] {
-						R.id.textViewName, R.id.textViewQuantity });
+				new String[] { "name", "quantity", "update_time" }, new int[] {
+						R.id.textViewName, R.id.textViewQuantity, R.id.textViewUpdate});
 		listView.setAdapter(simpleAdapter);
 	}
 

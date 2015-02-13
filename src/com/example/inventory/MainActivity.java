@@ -94,10 +94,10 @@ public class MainActivity extends Activity implements OnClickListener {
 			anItem = new Items(editThisItem.getText().toString(), 7);
 			if (itemsDb.deleteItem(anItem)) {
 				Toast.makeText(getApplicationContext(), "Delete Successful.",
-						Toast.LENGTH_LONG).show();
+						Toast.LENGTH_SHORT).show();
 			} else {
 				Toast.makeText(getApplicationContext(), "Item does not exist.",
-						Toast.LENGTH_LONG).show();
+						Toast.LENGTH_SHORT).show();
 			}
 			editThisItem.setText("");
 			break;
@@ -108,7 +108,15 @@ public class MainActivity extends Activity implements OnClickListener {
 		case R.id.updateInPopup:
 			anItem = new Items(updateItemName.getText().toString(),
 					Integer.parseInt(updateItemAmount.getText().toString()));
-			itemsDb.updateItem(anItem);
+			if(itemsDb.updateItem(anItem) > 0){
+				Toast.makeText(getApplicationContext(), "Update Successful.",
+						Toast.LENGTH_SHORT).show();
+			}else{
+				Toast.makeText(getApplicationContext(), "Item Does Not Exist.",
+						Toast.LENGTH_SHORT).show();
+			}
+			updateItemName.setText("");
+			updateItemAmount.setText("");
 			break;
 		default:
 			throw new RuntimeException("Invalid button");

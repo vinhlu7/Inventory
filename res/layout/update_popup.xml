@@ -15,7 +15,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="99dp"
         android:ems="10"
-        android:hint="@string/addNameHint"
+        android:hint="@string/updateItem"
         android:inputType="textCapWords"
         android:singleLine="true" />
      
@@ -46,7 +46,7 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/updateItemName"
         android:ems="10"
-        android:hint="@string/addAmountHint"
+        android:hint="@string/updateItemAmount"
         android:inputType="number"
         android:singleLine="true" >
 

@@ -8,7 +8,9 @@
     <string name="View">View</string>
     <string name="Update">Update</string>
     <string name="addNameHint">Enter Item Name</string>
+    <string name="updateItem">Enter Name of Existing Item</string>
     <string name="addAmountHint">Enter Quantity</string>
+    <string name="updateItemAmount">Enter New Quantity</string>
     <string name="addComplete">Add</string>
     <string name="nameHeader">NAME</string>
     <string name="quantityHeader">QUANTITY</string>

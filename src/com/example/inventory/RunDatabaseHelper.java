@@ -27,8 +27,9 @@ public class RunDatabaseHelper extends SQLiteOpenHelper {
 	public static final String COLUMN_ITEMS_ID = "_id";
 	private static final String COLUMN_ITEMS_NAME = "name";
 	private static final String COLUMN_ITEMS_QUANTITY = "quantity";
+	private static final String COLUMN_ITEMS_LAST_MOD = "update_time";
 	private static final String[] COLUMNS = { COLUMN_ITEMS_ID,
-			COLUMN_ITEMS_NAME, COLUMN_ITEMS_QUANTITY };
+			COLUMN_ITEMS_NAME, COLUMN_ITEMS_QUANTITY, COLUMN_ITEMS_LAST_MOD};
 
 	// public RunDatabaseHelper(Context context) { //before content provider
 	// super(context, DB_NAME, null, VERSION);
@@ -43,7 +44,8 @@ public class RunDatabaseHelper extends SQLiteOpenHelper {
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		// Create the "run" table
-		db.execSQL("CREATE TABLE items (_id INTEGER PRIMARY KEY AUTOINCREMENT, name text, quantity integer);");
+		db.execSQL("CREATE TABLE items (_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+				"name text, quantity integer, update_time text );");
 	}
 
 	@Override
@@ -59,6 +61,7 @@ public class RunDatabaseHelper extends SQLiteOpenHelper {
 		ContentValues cv = new ContentValues();
 		cv.put(COLUMN_ITEMS_NAME, item.getItemName());
 		cv.put(COLUMN_ITEMS_QUANTITY, item.getItemQuantity());
+		cv.put(COLUMN_ITEMS_LAST_MOD, item.getTime());
 		// if (db.insert(TABLE_ITEMS, null, cv) > 0) {
 		// db.close();
 		// Log.d("insertItem()", item.toString());
@@ -78,7 +81,8 @@ public class RunDatabaseHelper extends SQLiteOpenHelper {
 		// new String[] { String.valueOf(id) }, null, null, null, null);
 
 		Cursor cursor = myCr.query(MyContentProvider.CONTENT_URI, COLUMNS,
-				COLUMN_ITEMS_ID + " =?", new String[] { String.valueOf(id) }, null);
+				COLUMN_ITEMS_ID + " =?", new String[] { String.valueOf(id) },
+				null);
 		// 3. if we got results get the first one
 		if (cursor != null)
 			cursor.moveToFirst();
@@ -94,13 +98,13 @@ public class RunDatabaseHelper extends SQLiteOpenHelper {
 	}
 
 	public int getId(Items item) {
-		//SQLiteDatabase db = this.getReadableDatabase();
-		//Cursor cursor = db.query(TABLE_ITEMS, COLUMNS, " name = ?",
-			//	new String[] { item.getItemName() }, null, null, null, null);
-		
+		// SQLiteDatabase db = this.getReadableDatabase();
+		// Cursor cursor = db.query(TABLE_ITEMS, COLUMNS, " name = ?",
+		// new String[] { item.getItemName() }, null, null, null, null);
+
 		Cursor cursor = myCr.query(MyContentProvider.CONTENT_URI, COLUMNS,
 				" name = ?", new String[] { item.getItemName() }, null);
-		
+
 		if (cursor != null && cursor.getCount() != 0) {
 			cursor.moveToFirst();
 
@@ -118,10 +122,11 @@ public class RunDatabaseHelper extends SQLiteOpenHelper {
 	public List<Items> getAllItems() {
 		List<Items> itemsList = new LinkedList<Items>();
 
-		//String query = "SELECT * FROM " + TABLE_ITEMS;
-		//SQLiteDatabase db = this.getWritableDatabase();
-		//Cursor cursor = db.rawQuery(query, null);
-		Cursor cursor = myCr.query(MyContentProvider.CONTENT_URI, COLUMNS, null, null, null);
+		// String query = "SELECT * FROM " + TABLE_ITEMS;
+		// SQLiteDatabase db = this.getWritableDatabase();
+		// Cursor cursor = db.rawQuery(query, null);
+		Cursor cursor = myCr.query(MyContentProvider.CONTENT_URI, COLUMNS,
+				null, null, null);
 
 		Items itemInstant = null;
 		if (cursor.moveToFirst()) {
@@ -140,23 +145,19 @@ public class RunDatabaseHelper extends SQLiteOpenHelper {
 	}
 
 	public int updateItem(Items item) {
-		//SQLiteDatabase db = this.getWritableDatabase();
+		// SQLiteDatabase db = this.getWritableDatabase();
 		ContentValues cv = new ContentValues();
-		//System.out.println("item name: " + item.getItemName());
-		//System.out.println("item amount: " + item.getItemQuantity());
-		//System.out.println("item id: " + getId(item));
 		cv.put(COLUMN_ITEMS_NAME, item.getItemName());
 		cv.put(COLUMN_ITEMS_QUANTITY, item.getItemQuantity());
+		cv.put(COLUMN_ITEMS_LAST_MOD, item.getTime());
 		Uri uri = Uri.parse(MyContentProvider.CONTENT_URI + "/" + getId(item));
-		//int updatedRows = db.update(
-		//		TABLE_ITEMS, // returns # of rows affected
-		//		cv, COLUMN_ITEMS_ID + " = ?",
-		//		new String[] { String.valueOf(item.getId()) });
+		// int updatedRows = db.update(
+		// TABLE_ITEMS, // returns # of rows affected
+		// cv, COLUMN_ITEMS_ID + " = ?",
+		// new String[] { String.valueOf(item.getId()) });
 
-		//db.close();
-		int updatedRows = myCr.update(
-				uri,
-				cv, COLUMN_ITEMS_ID + " =?",
+		// db.close();
+		int updatedRows = myCr.update(uri, cv, COLUMN_ITEMS_ID + " =?",
 				new String[] { String.valueOf(getId(item)) });
 		return updatedRows;
 	}

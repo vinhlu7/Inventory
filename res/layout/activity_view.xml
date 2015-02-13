@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical" 
+    android:background="#2AD8FA">
 
     <ListView
         android:id="@android:id/list"
@@ -23,27 +24,27 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/headerQuantity"
-        android:layout_width="70dip"
+        android:id="@+id/headerUpdated"
+        android:layout_width="100dip"
         android:layout_height="20dp"
         android:layout_above="@android:id/list"
-        android:layout_marginLeft="35dp"
-        android:layout_toRightOf="@+id/header"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="25dp"
         android:background="#9A9494"
-        android:text="@string/quantityHeader"
+        android:text="@string/updatedHeader"
         android:textColor="#000000"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/headerUpdated"
-        android:layout_width="100dip"
+        android:id="@+id/headerQuantity"
+        android:layout_width="70dip"
         android:layout_height="20dp"
-        android:layout_alignBottom="@+id/headerQuantity"
-        android:layout_marginLeft="46dp"
-        android:layout_toRightOf="@+id/headerQuantity"
-        android:textColor="#000000"
+        android:layout_above="@android:id/list"
+        android:layout_marginRight="31dp"
+        android:layout_toLeftOf="@+id/headerUpdated"
         android:background="#9A9494"
-        android:text="@string/updatedHeader" 
+        android:text="@string/quantityHeader"
+        android:textColor="#000000"
         android:textStyle="bold" />
 
 </RelativeLayout>

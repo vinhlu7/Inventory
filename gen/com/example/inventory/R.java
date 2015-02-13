@@ -25,7 +25,7 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_settings=0x7f080016;
+        public static final int action_settings=0x7f080017;
         public static final int addButton=0x7f080005;
         public static final int addComplete=0x7f080004;
         public static final int backButton=0x7f080010;
@@ -42,6 +42,7 @@ public final class R {
         public static final int textView2=0x7f080002;
         public static final int textViewName=0x7f080014;
         public static final int textViewQuantity=0x7f080015;
+        public static final int textViewUpdate=0x7f080016;
         public static final int updateButton=0x7f080009;
         public static final int updateInPopup=0x7f080012;
         public static final int updateItemAmount=0x7f080013;
@@ -66,13 +67,15 @@ public final class R {
         public static final int Update=0x7f050005;
         public static final int View=0x7f050004;
         public static final int action_settings=0x7f050001;
-        public static final int addAmountHint=0x7f050007;
-        public static final int addComplete=0x7f050008;
+        public static final int addAmountHint=0x7f050008;
+        public static final int addComplete=0x7f05000a;
         public static final int addNameHint=0x7f050006;
         public static final int app_name=0x7f050000;
-        public static final int nameHeader=0x7f050009;
-        public static final int quantityHeader=0x7f05000a;
-        public static final int updatedHeader=0x7f05000b;
+        public static final int nameHeader=0x7f05000b;
+        public static final int quantityHeader=0x7f05000c;
+        public static final int updateItem=0x7f050007;
+        public static final int updateItemAmount=0x7f050009;
+        public static final int updatedHeader=0x7f05000d;
     }
     public static final class style {
         /** 

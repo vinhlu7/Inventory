@@ -6,7 +6,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.inventory.MainActivity" >
+    tools:context="com.example.inventory.MainActivity" 
+    android:background="#2AD8FA">
 
     <Button
         android:id="@+id/addButton"
@@ -15,7 +16,8 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="45dp"
-        android:text="@string/Add" />
+        android:text="@string/Add" 
+        android:background="#616060"/>
 
     <Button
         android:id="@+id/deleteButton"
@@ -24,7 +26,8 @@
         android:layout_below="@+id/addButton"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="34dp"
-        android:text="@string/Delete" />
+        android:text="@string/Delete" 
+        android:background="#616060"/>
 
     <Button
         android:id="@+id/viewTest"
@@ -33,7 +36,8 @@
         android:layout_alignLeft="@+id/viewButton"
         android:layout_below="@+id/viewButton"
         android:layout_marginTop="26dp"
-        android:text="@string/View" />
+        android:text="@string/View" 
+        android:background="#616060"/>
 
     <Button
         android:id="@+id/updateButton"
@@ -42,7 +46,8 @@
         android:layout_alignLeft="@+id/viewTest"
         android:layout_below="@+id/viewTest"
         android:layout_marginTop="20dp"
-        android:text="@string/Update" />
+        android:text="@string/Update" 
+        android:background="#616060" />
 
     <Button
         android:id="@+id/viewButton"
@@ -51,6 +56,7 @@
         android:layout_alignLeft="@+id/deleteButton"
         android:layout_below="@+id/deleteButton"
         android:layout_marginTop="34dp"
-        android:text="@string/View" />
+        android:text="@string/View" 
+        android:background="#616060" />
 
 </RelativeLayout>

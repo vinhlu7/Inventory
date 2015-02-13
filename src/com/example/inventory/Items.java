@@ -1,9 +1,14 @@
 package com.example.inventory;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class Items {
 	private int itemId;
 	private String itemName;
 	private int itemQuantity;
+	private Calendar calendar;
+	private SimpleDateFormat dateFormat;
 
 	public Items() {
 	}
@@ -12,6 +17,8 @@ public class Items {
 		super();
 		this.itemName = itemName;
 		this.itemQuantity = itemQuantity;
+		this.calendar = Calendar.getInstance();
+		this.dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 	}
 
 	public int getId() {
@@ -36,6 +43,11 @@ public class Items {
 
 	public void setItemQuantity(int quantity) {
 		itemQuantity = quantity;
+	}
+	
+	public String getTime(){
+		String formattedDate = dateFormat.format(calendar.getTime());
+		return formattedDate;
 	}
 
 	@Override
