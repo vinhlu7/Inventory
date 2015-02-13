@@ -27,21 +27,30 @@
         android:text="@string/Delete" />
 
     <Button
-        android:id="@+id/viewButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/deleteButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="42dp"
-        android:text="@string/View" />
-
-    <Button
         android:id="@+id/viewTest"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/viewButton"
         android:layout_below="@+id/viewButton"
         android:layout_marginTop="26dp"
+        android:text="@string/View" />
+
+    <Button
+        android:id="@+id/updateButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/viewTest"
+        android:layout_below="@+id/viewTest"
+        android:layout_marginTop="20dp"
+        android:text="@string/Update" />
+
+    <Button
+        android:id="@+id/viewButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/deleteButton"
+        android:layout_below="@+id/deleteButton"
+        android:layout_marginTop="34dp"
         android:text="@string/View" />
 
 </RelativeLayout>

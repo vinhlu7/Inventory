@@ -5,8 +5,6 @@ import java.util.HashMap;
 
 import android.app.ListActivity;
 import android.database.Cursor;
-import android.graphics.Color;
-import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.LoaderManager;
@@ -28,8 +26,6 @@ public class ViewItemActivity extends ListActivity implements
 
 	//ArrayList<String> list = new ArrayList<String>();
 	//ArrayAdapter<String> adapter;
-	TextView nameHeader;
-	TextView quantityHeader;
 	ListView listView;
 
 	ArrayList<HashMap<String, String>> allItemsList;
@@ -44,16 +40,7 @@ public class ViewItemActivity extends ListActivity implements
 		//adapter = new ArrayAdapter<String>(this,
 			//	android.R.layout.simple_list_item_1, list);
 
-		nameHeader = (TextView) findViewById(R.id.header);
-		quantityHeader = (TextView) findViewById(R.id.headerQuantity);
-		quantityHeader.setText("QUANTITY");
-		quantityHeader.setTypeface(null, Typeface.BOLD);
-		quantityHeader.setTextColor(Color.BLACK);
-		
-		nameHeader.setText("NAME");
-		nameHeader.setTypeface(null, Typeface.BOLD);
-		nameHeader.setTextColor(Color.BLACK);
-		// textView.setWidth(10);
+
 		// listView = getListView();
 		// listView.addHeaderView(textView);
 		listView = (ListView) findViewById(android.R.id.list);

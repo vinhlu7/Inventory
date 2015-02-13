@@ -6,8 +6,12 @@
     <string name="Add">Add</string>
     <string name="Delete">Delete</string>
     <string name="View">View</string>
-    <string name="addNameHint">Pencil</string>
-    <string name="addAmountHint">7</string>
+    <string name="Update">Update</string>
+    <string name="addNameHint">Enter Item Name</string>
+    <string name="addAmountHint">Enter Quantity</string>
     <string name="addComplete">Add</string>
+    <string name="nameHeader">NAME</string>
+    <string name="quantityHeader">QUANTITY</string>
+    <string name="updatedHeader">LAST UPDATED</string>
 
 </resources>

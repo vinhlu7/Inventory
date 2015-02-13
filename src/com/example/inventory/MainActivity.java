@@ -23,10 +23,18 @@ public class MainActivity extends Activity implements OnClickListener {
 	private Button viewButton;
 	private Button viewTest;
 	private Button deleteButton;
+	private Button updateButton;
+
 	private Button cancelButton;
 	private Button deleteInPopup;
+	private Button updateInPopup;
 	private PopupWindow popupWindow;
-	private EditText deleteItemName;
+	private EditText editThisItem;
+	private EditText updateItemAmount;
+	private EditText updateItemName;
+	
+	Items anItem;
+	RunDatabaseHelper itemsDb;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +45,16 @@ public class MainActivity extends Activity implements OnClickListener {
 		viewButton = (Button) findViewById(R.id.viewButton);
 		viewTest = (Button) findViewById(R.id.viewTest);
 		deleteButton = (Button) findViewById(R.id.deleteButton);
+		updateButton = (Button) findViewById(R.id.updateButton);
 
 		addButton.setOnClickListener(this);
 		viewButton.setOnClickListener(this);
 		viewTest.setOnClickListener(this);
 		deleteButton.setOnClickListener(this);
+		updateButton.setOnClickListener(this);
+		
+		anItem = new Items();
+		itemsDb = new RunDatabaseHelper(this, null,null, 1);
 	}
 
 	public void onClick(View v) {
@@ -63,12 +76,12 @@ public class MainActivity extends Activity implements OnClickListener {
 		case R.id.viewTest:
 			Log.d("2nd view buton", "2nd view button");
 			Intent intent3 = new Intent(getApplicationContext(),
-			ViewItemActivity.class);
+					ViewItemActivity.class);
 			startActivity(intent3);
 			break;
 		case R.id.deleteButton:
 			Log.d("deleteButton", "delete button");
-			startPopup();
+			startPopup(R.layout.delete_popup);
 			break;
 		case R.id.backButton:
 			Log.d("cancelButton", "cancel button");
@@ -76,9 +89,9 @@ public class MainActivity extends Activity implements OnClickListener {
 			break;
 		case R.id.deleteInPopup:
 			Log.d("deleteInPopup", "deleteInPopup");
-			final RunDatabaseHelper itemsDb = new RunDatabaseHelper(this, null,
-					null, 1);
-			Items anItem = new Items(deleteItemName.getText().toString(), 7);
+			//final RunDatabaseHelper itemsDb = new RunDatabaseHelper(this, null,
+				//	null, 1);
+			anItem = new Items(editThisItem.getText().toString(), 7);
 			if (itemsDb.deleteItem(anItem)) {
 				Toast.makeText(getApplicationContext(), "Delete Successful.",
 						Toast.LENGTH_LONG).show();
@@ -86,30 +99,45 @@ public class MainActivity extends Activity implements OnClickListener {
 				Toast.makeText(getApplicationContext(), "Item does not exist.",
 						Toast.LENGTH_LONG).show();
 			}
-			deleteItemName.setText("");
+			editThisItem.setText("");
+			break;
+		case R.id.updateButton:
+			Log.d("updateButton", "In updateButton");
+			startPopup(R.layout.update_popup);
+			break;
+		case R.id.updateInPopup:
+			anItem = new Items(updateItemName.getText().toString(),
+					Integer.parseInt(updateItemAmount.getText().toString()));
+			itemsDb.updateItem(anItem);
 			break;
 		default:
 			throw new RuntimeException("Invalid button");
 		}
 	}
 
-	private void startPopup() {
+	private void startPopup(int layoutType) {
 		try {
 			// We need to get the instance of the LayoutInflater
 			LayoutInflater inflater = (LayoutInflater) MainActivity.this
 					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			View layout = inflater.inflate(R.layout.delete_popup,
+			View layout = inflater.inflate(layoutType,
 					(ViewGroup) findViewById(R.id.popup_element));
 			popupWindow = new PopupWindow(layout, 600, 650, true);
 			popupWindow.showAtLocation(layout, Gravity.CENTER, 0, 0);
 
+			editThisItem = (EditText) layout.findViewById(R.id.deleteItemName);
+			updateItemAmount = (EditText) layout.findViewById(R.id.updateItemAmount);
+			updateItemName = (EditText) layout.findViewById(R.id.updateItemName);
+			
 			cancelButton = (Button) layout.findViewById(R.id.backButton);
-			deleteInPopup = (Button) layout.findViewById(R.id.deleteInPopup);
-			deleteItemName = (EditText) layout
-					.findViewById(R.id.deleteItemName);
-
 			cancelButton.setOnClickListener(this);
-			deleteInPopup.setOnClickListener(this);
+			if (layoutType == R.layout.delete_popup) {
+				deleteInPopup = (Button) layout.findViewById(R.id.deleteInPopup);
+				deleteInPopup.setOnClickListener(this);
+			}else if(layoutType == R.layout.update_popup){
+				updateInPopup = (Button) layout.findViewById(R.id.updateInPopup);
+				updateInPopup.setOnClickListener(this);
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();

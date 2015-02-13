@@ -13,6 +13,7 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.net.Uri;
 import android.util.Log;
 
 public class RunDatabaseHelper extends SQLiteOpenHelper {
@@ -47,7 +48,7 @@ public class RunDatabaseHelper extends SQLiteOpenHelper {
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		Log.d("drop db", "no");
+		Log.d("onUpgrade()", "drop db");
 		db.execSQL("DROP TABLE IF EXISTS items");
 		this.onCreate(db);
 	}
@@ -77,7 +78,7 @@ public class RunDatabaseHelper extends SQLiteOpenHelper {
 		// new String[] { String.valueOf(id) }, null, null, null, null);
 
 		Cursor cursor = myCr.query(MyContentProvider.CONTENT_URI, COLUMNS,
-				" _id = ?", new String[] { String.valueOf(id) }, null);
+				COLUMN_ITEMS_ID + " =?", new String[] { String.valueOf(id) }, null);
 		// 3. if we got results get the first one
 		if (cursor != null)
 			cursor.moveToFirst();
@@ -98,7 +99,7 @@ public class RunDatabaseHelper extends SQLiteOpenHelper {
 			//	new String[] { item.getItemName() }, null, null, null, null);
 		
 		Cursor cursor = myCr.query(MyContentProvider.CONTENT_URI, COLUMNS,
-				" _id = ?", new String[] { item.getItemName() }, null);
+				" name = ?", new String[] { item.getItemName() }, null);
 		
 		if (cursor != null && cursor.getCount() != 0) {
 			cursor.moveToFirst();
@@ -139,17 +140,24 @@ public class RunDatabaseHelper extends SQLiteOpenHelper {
 	}
 
 	public int updateItem(Items item) {
-		SQLiteDatabase db = this.getWritableDatabase();
+		//SQLiteDatabase db = this.getWritableDatabase();
 		ContentValues cv = new ContentValues();
+		//System.out.println("item name: " + item.getItemName());
+		//System.out.println("item amount: " + item.getItemQuantity());
+		//System.out.println("item id: " + getId(item));
 		cv.put(COLUMN_ITEMS_NAME, item.getItemName());
 		cv.put(COLUMN_ITEMS_QUANTITY, item.getItemQuantity());
+		Uri uri = Uri.parse(MyContentProvider.CONTENT_URI + "/" + getId(item));
+		//int updatedRows = db.update(
+		//		TABLE_ITEMS, // returns # of rows affected
+		//		cv, COLUMN_ITEMS_ID + " = ?",
+		//		new String[] { String.valueOf(item.getId()) });
 
-		int updatedRows = db.update(
-				TABLE_ITEMS, // returns # of rows affected
-				cv, COLUMN_ITEMS_ID + " = ?",
-				new String[] { String.valueOf(item.getId()) });
-
-		db.close();
+		//db.close();
+		int updatedRows = myCr.update(
+				uri,
+				cv, COLUMN_ITEMS_ID + " =?",
+				new String[] { String.valueOf(getId(item)) });
 		return updatedRows;
 	}
 
@@ -161,7 +169,6 @@ public class RunDatabaseHelper extends SQLiteOpenHelper {
 		 * " = ?", new String[] { String.valueOf(getId(item)) }); deleted =
 		 * true; db.close(); Log.d("deleteItem", item.toString()); }
 		 */
-		//System.out.println("id is: " + getId(item));
 		if (getId(item) > 0) {
 			Log.d("delete", "delete in if");
 			myCr.delete(MyContentProvider.CONTENT_URI,

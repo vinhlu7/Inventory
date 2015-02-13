@@ -15,8 +15,12 @@ public class MyContentProvider extends ContentProvider {
 
 	private static final String AUTHORITY = "com.example.inventory.MyContentProvider";
 	private static final String TABLE_ITEMS = "items";
+	public static final String COLUMN_ITEMS_ID = "_id";
+	
 	public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY
 			+ "/" + TABLE_ITEMS);
+	public static final Uri COLUMN_URI = Uri.parse("content://" + AUTHORITY
+			+ "/" + TABLE_ITEMS + "/#" + COLUMN_ITEMS_ID);
 
 	public static final int ALL_ITEMS = 1;
 	public static final int ITEM_ID = 2;
@@ -146,7 +150,7 @@ public class MyContentProvider extends ContentProvider {
 		      rowsUpdated = 
 			sqlDB.update(RunDatabaseHelper.TABLE_ITEMS, 
 		          values,
-		          RunDatabaseHelper.COLUMN_ITEMS_ID + "=" + id 
+		          RunDatabaseHelper.COLUMN_ITEMS_ID + "=" + id
 		          + " and " 
 		          + selection,
 		          selectionArgs);
