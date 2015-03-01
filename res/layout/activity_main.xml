@@ -2,12 +2,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#2AD8FA"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.inventory.MainActivity" 
-    android:background="#2AD8FA">
+    tools:context="com.example.inventory.MainActivity" >
+
+    <SearchView
+        android:id="@+id/search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <Button
         android:id="@+id/addButton"
@@ -16,8 +21,8 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="45dp"
-        android:text="@string/Add" 
-        android:background="#616060"/>
+        android:background="#616060"
+        android:text="@string/Add" />
 
     <Button
         android:id="@+id/deleteButton"
@@ -26,8 +31,8 @@
         android:layout_below="@+id/addButton"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="34dp"
-        android:text="@string/Delete" 
-        android:background="#616060"/>
+        android:background="#616060"
+        android:text="@string/Delete" />
 
     <Button
         android:id="@+id/viewTest"
@@ -36,8 +41,8 @@
         android:layout_alignLeft="@+id/viewButton"
         android:layout_below="@+id/viewButton"
         android:layout_marginTop="26dp"
-        android:text="@string/View" 
-        android:background="#616060"/>
+        android:background="#616060"
+        android:text="@string/View" />
 
     <Button
         android:id="@+id/updateButton"
@@ -46,8 +51,8 @@
         android:layout_alignLeft="@+id/viewTest"
         android:layout_below="@+id/viewTest"
         android:layout_marginTop="20dp"
-        android:text="@string/Update" 
-        android:background="#616060" />
+        android:background="#616060"
+        android:text="@string/Update" />
 
     <Button
         android:id="@+id/viewButton"
@@ -56,7 +61,7 @@
         android:layout_alignLeft="@+id/deleteButton"
         android:layout_below="@+id/deleteButton"
         android:layout_marginTop="34dp"
-        android:text="@string/View" 
-        android:background="#616060" />
+        android:background="#616060"
+        android:text="@string/View" />
 
 </RelativeLayout>

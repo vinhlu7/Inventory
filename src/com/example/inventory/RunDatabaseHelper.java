@@ -24,6 +24,7 @@ public class RunDatabaseHelper extends SQLiteOpenHelper {
 	private static final int VERSION = 1;
 
 	public static final String TABLE_ITEMS = "items";
+	public static final String TABLE2 = "fts_table";
 	public static final String COLUMN_ITEMS_ID = "_id";
 	private static final String COLUMN_ITEMS_NAME = "name";
 	private static final String COLUMN_ITEMS_QUANTITY = "quantity";
@@ -52,6 +53,7 @@ public class RunDatabaseHelper extends SQLiteOpenHelper {
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		Log.d("onUpgrade()", "drop db");
 		db.execSQL("DROP TABLE IF EXISTS items");
+		db.execSQL("DROP TABLE IF EXISTS fts_table");
 		this.onCreate(db);
 	}
 
