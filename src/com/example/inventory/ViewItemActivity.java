@@ -36,7 +36,6 @@ public class ViewItemActivity extends ListActivity implements
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_view);
-
 		//adapter = new ArrayAdapter<String>(this,
 			//	android.R.layout.simple_list_item_1, list);
 
@@ -46,14 +45,7 @@ public class ViewItemActivity extends ListActivity implements
 		listView = (ListView) findViewById(android.R.id.list);
 		allItemsList = new ArrayList<HashMap<String, String>>();
 		map = new HashMap<String, String>();
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
 		getLoaderManager().initLoader(0, null, this);
-		return true;
 	}
 
 	@Override

@@ -100,11 +100,14 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f070000;
+        public static final int AppBaseTheme=0x7f070003;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f070001;
+        public static final int AppTheme=0x7f070004;
+        public static final int Theme_Default=0x7f070000;
+        public static final int Theme_FullScreen=0x7f070002;
+        public static final int Theme_NoTitle=0x7f070001;
     }
     public static final class xml {
         public static final int searchable=0x7f040000;
