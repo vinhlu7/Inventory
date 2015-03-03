@@ -14,6 +14,6 @@
     <string name="addComplete">Add</string>
     <string name="nameHeader">NAME</string>
     <string name="quantityHeader">QUANTITY</string>
-    <string name="updatedHeader">LAST UPDATED</string>
+    <string name="updatedHeader">UPDATED</string>
 
 </resources>
