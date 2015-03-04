@@ -40,8 +40,8 @@
         android:id="@+id/viewTest"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/viewButton"
-        android:layout_below="@+id/viewButton"
+        android:layout_alignLeft="@+id/deleteButton"
+        android:layout_below="@+id/deleteButton"
         android:layout_marginTop="26dp"
         android:background="#616060"
         android:text="@string/View" />
@@ -55,15 +55,5 @@
         android:layout_marginTop="20dp"
         android:background="#616060"
         android:text="@string/Update" />
-
-    <Button
-        android:id="@+id/viewButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/deleteButton"
-        android:layout_below="@+id/deleteButton"
-        android:layout_marginTop="34dp"
-        android:background="#616060"
-        android:text="@string/View" />
 </RelativeLayout>
 </ScrollView>

@@ -50,7 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/viewTest"
         android:layout_below="@+id/viewTest"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="28dp"
         android:background="#616060"
         android:text="@string/Update" />
 

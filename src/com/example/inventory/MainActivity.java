@@ -21,7 +21,6 @@ public class MainActivity extends Activity implements OnClickListener {
 
 	private Button addButton;
 	private Button viewButton;
-	private Button viewTest;
 	private Button deleteButton;
 	private Button updateButton;
 
@@ -42,14 +41,12 @@ public class MainActivity extends Activity implements OnClickListener {
 		setContentView(R.layout.activity_main);
 
 		addButton = (Button) findViewById(R.id.addButton);
-		viewButton = (Button) findViewById(R.id.viewButton);
-		viewTest = (Button) findViewById(R.id.viewTest);
+		viewButton = (Button) findViewById(R.id.viewTest);
 		deleteButton = (Button) findViewById(R.id.deleteButton);
 		updateButton = (Button) findViewById(R.id.updateButton);
 
 		addButton.setOnClickListener(this);
 		viewButton.setOnClickListener(this);
-		viewTest.setOnClickListener(this);
 		deleteButton.setOnClickListener(this);
 		updateButton.setOnClickListener(this);
 		
@@ -65,16 +62,8 @@ public class MainActivity extends Activity implements OnClickListener {
 					AddItemActivity.class);
 			startActivity(intent1);
 			break;
-		case R.id.viewButton:
-			Log.d("view buton", "view button");
-			Intent intent2 = new Intent(getApplicationContext(),
-					AndroidDatabaseManager.class);
-			// Intent intent2 = new Intent(getApplicationContext(),
-			// ViewItemActivity.class);
-			startActivity(intent2);
-			break;
 		case R.id.viewTest:
-			Log.d("2nd view buton", "2nd view button");
+			Log.d("view buton", "view button");
 			Intent intent3 = new Intent(getApplicationContext(),
 					ViewItemActivity.class);
 			startActivity(intent3);
