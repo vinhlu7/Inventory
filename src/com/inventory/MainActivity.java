@@ -5,12 +5,14 @@ import com.inventory.R;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -26,14 +28,14 @@ public class MainActivity extends Activity implements OnClickListener {
 	private Button deleteButton;
 	private Button updateButton;
 
-	private Button cancelButton;
+	//private Button cancelButton;
 	private Button deleteInPopup;
 	private Button updateInPopup;
 	private PopupWindow popupWindow;
 	private EditText editThisItem;
 	private EditText updateItemAmount;
 	private EditText updateItemName;
-	
+
 	Items anItem;
 	RunDatabaseHelper itemsDb;
 
@@ -51,9 +53,9 @@ public class MainActivity extends Activity implements OnClickListener {
 		viewButton.setOnClickListener(this);
 		deleteButton.setOnClickListener(this);
 		updateButton.setOnClickListener(this);
-		
+
 		anItem = new Items();
-		itemsDb = new RunDatabaseHelper(this, null,null, 1);
+		itemsDb = new RunDatabaseHelper(this, null, null, 1);
 	}
 
 	public void onClick(View v) {
@@ -74,21 +76,27 @@ public class MainActivity extends Activity implements OnClickListener {
 			Log.d("deleteButton", "delete button");
 			startPopup(R.layout.delete_popup);
 			break;
-		case R.id.backButton:
-			Log.d("cancelButton", "cancel button");
-			popupWindow.dismiss();
-			break;
+		//case R.id.backButton:
+		//	Log.d("cancelButton", "cancel button");
+		//	popupWindow.dismiss();
+		//	break;
 		case R.id.deleteInPopup:
 			Log.d("deleteInPopup", "deleteInPopup");
-			//final RunDatabaseHelper itemsDb = new RunDatabaseHelper(this, null,
-				//	null, 1);
+			// final RunDatabaseHelper itemsDb = new RunDatabaseHelper(this,
+			// null,
+			// null, 1);
 			anItem = new Items(editThisItem.getText().toString(), 7);
-			if (itemsDb.deleteItem(anItem)) {
-				Toast.makeText(getApplicationContext(), "Delete Successful.",
-						Toast.LENGTH_SHORT).show();
+			if (!editThisItem.getText().toString().isEmpty()) {
+				if (itemsDb.deleteItem(anItem)) {
+					Toast.makeText(getApplicationContext(),
+							"Delete Successful.", Toast.LENGTH_SHORT).show();
+				} else {
+					Toast.makeText(getApplicationContext(),
+							"Item does not exist.", Toast.LENGTH_SHORT).show();
+				}
 			} else {
-				Toast.makeText(getApplicationContext(), "Item does not exist.",
-						Toast.LENGTH_SHORT).show();
+				Toast.makeText(getApplicationContext(),
+						"Missing item name.", Toast.LENGTH_SHORT).show();
 			}
 			editThisItem.setText("");
 			break;
@@ -99,10 +107,10 @@ public class MainActivity extends Activity implements OnClickListener {
 		case R.id.updateInPopup:
 			anItem = new Items(updateItemName.getText().toString(),
 					Integer.parseInt(updateItemAmount.getText().toString()));
-			if(itemsDb.updateItem(anItem) > 0){
+			if (itemsDb.updateItem(anItem) > 0) {
 				Toast.makeText(getApplicationContext(), "Update Successful.",
 						Toast.LENGTH_SHORT).show();
-			}else{
+			} else {
 				Toast.makeText(getApplicationContext(), "Item Does Not Exist.",
 						Toast.LENGTH_SHORT).show();
 			}
@@ -122,19 +130,25 @@ public class MainActivity extends Activity implements OnClickListener {
 			View layout = inflater.inflate(layoutType,
 					(ViewGroup) findViewById(R.id.popup_element));
 			popupWindow = new PopupWindow(layout, 600, 650, true);
+			popupWindow.setOutsideTouchable(true);
+			popupWindow.setBackgroundDrawable(new BitmapDrawable(null,""));
 			popupWindow.showAtLocation(layout, Gravity.CENTER, 0, 0);
 
 			editThisItem = (EditText) layout.findViewById(R.id.deleteItemName);
-			updateItemAmount = (EditText) layout.findViewById(R.id.updateItemAmount);
-			updateItemName = (EditText) layout.findViewById(R.id.updateItemName);
-			
-			cancelButton = (Button) layout.findViewById(R.id.backButton);
-			cancelButton.setOnClickListener(this);
+			updateItemAmount = (EditText) layout
+					.findViewById(R.id.updateItemAmount);
+			updateItemName = (EditText) layout
+					.findViewById(R.id.updateItemName);
+
+			//cancelButton = (Button) layout.findViewById(R.id.backButton);
+			//cancelButton.setOnClickListener(this);
 			if (layoutType == R.layout.delete_popup) {
-				deleteInPopup = (Button) layout.findViewById(R.id.deleteInPopup);
+				deleteInPopup = (Button) layout
+						.findViewById(R.id.deleteInPopup);
 				deleteInPopup.setOnClickListener(this);
-			}else if(layoutType == R.layout.update_popup){
-				updateInPopup = (Button) layout.findViewById(R.id.updateInPopup);
+			} else if (layoutType == R.layout.update_popup) {
+				updateInPopup = (Button) layout
+						.findViewById(R.id.updateInPopup);
 				updateInPopup.setOnClickListener(this);
 			}
 

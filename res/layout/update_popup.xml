@@ -18,17 +18,7 @@
         android:hint="@string/updateItem"
         android:inputType="textCapWords"
         android:singleLine="true" />
-     
-    <Button
-        android:id="@+id/updateInPopup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/backButton"
-        android:layout_alignBottom="@+id/backButton"
-        android:layout_marginRight="22dp"
-        android:layout_toLeftOf="@+id/backButton"
-        android:text="@string/Update" />
-
+	<!-- 
     <Button
         android:id="@+id/backButton"
         android:layout_width="wrap_content"
@@ -38,7 +28,7 @@
         android:layout_marginRight="66dp"
         android:layout_marginTop="102dp"
         android:text="Back" />
-
+	 -->
     <EditText
         android:id="@+id/updateItemAmount"
         android:layout_width="fill_parent"
@@ -52,5 +42,14 @@
 
         <requestFocus />
     </EditText>
+
+    <Button
+        android:id="@+id/updateInPopup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/updateItemAmount"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="42dp"
+        android:text="@string/Update" />
 
 </RelativeLayout>
