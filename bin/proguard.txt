@@ -1,0 +1,18 @@
+# view AndroidManifest.xml #generated:35
+-keep class com.inventory.AddItemActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:44
+-keep class com.inventory.AndroidDatabaseManager { <init>(...); }
+
+# view AndroidManifest.xml #generated:16
+-keep class com.inventory.MainActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:48
+-keep class com.inventory.MyContentProvider { <init>(...); }
+
+# view AndroidManifest.xml #generated:26
+-keep class com.inventory.SearchableActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:39
+-keep class com.inventory.ViewItemActivity { <init>(...); }
+

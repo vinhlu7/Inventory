@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.inventory"
+    package="com.inventory"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -14,7 +14,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
+            android:name="com.inventory.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.NoTitle" >
             <intent-filter>
@@ -23,7 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SearchableActivity" >
+        <activity android:name="com.inventory.SearchableActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
@@ -33,20 +33,20 @@
                 android:resource="@xml/searchable" />
         </activity>
         <activity
-            android:name=".AddItemActivity"
+            android:name="com.inventory.AddItemActivity"
             android:label="@string/app_name" 
             android:theme="@style/Theme.NoTitle"/>
         <activity
-            android:name=".ViewItemActivity"
+            android:name="com.inventory.ViewItemActivity"
             android:label="@string/app_name" 
             android:theme="@style/Theme.NoTitle" 
             />
         <activity
-            android:name=".AndroidDatabaseManager"
+            android:name="com.inventory.AndroidDatabaseManager"
             android:label="@string/app_name" />
 
         <provider
-            android:name="com.example.inventory.MyContentProvider"
+            android:name="com.inventory.MyContentProvider"
             android:authorities="com.example.inventory.MyContentProvider" />
     </application>
 
