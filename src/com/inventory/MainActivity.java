@@ -18,7 +18,9 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 public class MainActivity extends Activity implements OnClickListener {
@@ -28,13 +30,14 @@ public class MainActivity extends Activity implements OnClickListener {
 	private Button deleteButton;
 	private Button updateButton;
 
-	//private Button cancelButton;
+	// private Button cancelButton;
 	private Button deleteInPopup;
 	private Button updateInPopup;
 	private PopupWindow popupWindow;
 	private EditText editThisItem;
 	private EditText updateItemAmount;
 	private EditText updateItemName;
+	private FrameLayout layout_MainMenu;
 
 	Items anItem;
 	RunDatabaseHelper itemsDb;
@@ -48,6 +51,8 @@ public class MainActivity extends Activity implements OnClickListener {
 		viewButton = (Button) findViewById(R.id.viewTest);
 		deleteButton = (Button) findViewById(R.id.deleteButton);
 		updateButton = (Button) findViewById(R.id.updateButton);
+		layout_MainMenu = (FrameLayout) findViewById(R.id.mainmenu);
+		layout_MainMenu.getForeground().setAlpha(0);
 
 		addButton.setOnClickListener(this);
 		viewButton.setOnClickListener(this);
@@ -76,10 +81,10 @@ public class MainActivity extends Activity implements OnClickListener {
 			Log.d("deleteButton", "delete button");
 			startPopup(R.layout.delete_popup);
 			break;
-		//case R.id.backButton:
-		//	Log.d("cancelButton", "cancel button");
-		//	popupWindow.dismiss();
-		//	break;
+		// case R.id.backButton:
+		// Log.d("cancelButton", "cancel button");
+		// popupWindow.dismiss();
+		// break;
 		case R.id.deleteInPopup:
 			Log.d("deleteInPopup", "deleteInPopup");
 			// final RunDatabaseHelper itemsDb = new RunDatabaseHelper(this,
@@ -95,8 +100,8 @@ public class MainActivity extends Activity implements OnClickListener {
 							"Item does not exist.", Toast.LENGTH_SHORT).show();
 				}
 			} else {
-				Toast.makeText(getApplicationContext(),
-						"Missing item name.", Toast.LENGTH_SHORT).show();
+				Toast.makeText(getApplicationContext(), "Missing item name.",
+						Toast.LENGTH_SHORT).show();
 			}
 			editThisItem.setText("");
 			break;
@@ -122,8 +127,10 @@ public class MainActivity extends Activity implements OnClickListener {
 		}
 	}
 
+
 	private void startPopup(int layoutType) {
 		try {
+			layout_MainMenu.getForeground().setAlpha(220);
 			// We need to get the instance of the LayoutInflater
 			LayoutInflater inflater = (LayoutInflater) MainActivity.this
 					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -131,7 +138,7 @@ public class MainActivity extends Activity implements OnClickListener {
 					(ViewGroup) findViewById(R.id.popup_element));
 			popupWindow = new PopupWindow(layout, 600, 650, true);
 			popupWindow.setOutsideTouchable(true);
-			popupWindow.setBackgroundDrawable(new BitmapDrawable(null,""));
+			popupWindow.setBackgroundDrawable(new BitmapDrawable(null, ""));
 			popupWindow.showAtLocation(layout, Gravity.CENTER, 0, 0);
 
 			editThisItem = (EditText) layout.findViewById(R.id.deleteItemName);
@@ -140,8 +147,8 @@ public class MainActivity extends Activity implements OnClickListener {
 			updateItemName = (EditText) layout
 					.findViewById(R.id.updateItemName);
 
-			//cancelButton = (Button) layout.findViewById(R.id.backButton);
-			//cancelButton.setOnClickListener(this);
+			// cancelButton = (Button) layout.findViewById(R.id.backButton);
+			// cancelButton.setOnClickListener(this);
 			if (layoutType == R.layout.delete_popup) {
 				deleteInPopup = (Button) layout
 						.findViewById(R.id.deleteInPopup);
@@ -151,11 +158,18 @@ public class MainActivity extends Activity implements OnClickListener {
 						.findViewById(R.id.updateInPopup);
 				updateInPopup.setOnClickListener(this);
 			}
+			
+			 popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+			      @Override
+			      public void onDismiss() {
+			    	  layout_MainMenu.getForeground().setAlpha(0);
+			      }
+			  });
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+		
 	}
 
 	@Override
