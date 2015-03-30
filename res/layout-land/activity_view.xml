@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal" 
+    android:orientation="vertical" 
     android:background="#2AD8FA" 
     >
 
@@ -29,7 +29,7 @@
         android:layout_width="70dip"
         android:layout_height="20dp"
         android:layout_above="@android:id/list"
-        android:layout_marginLeft="146dp"
+        android:layout_marginLeft="40dp"
         android:layout_toRightOf="@+id/header"
         android:background="#9A9494"
         android:text="@string/quantityHeader"
@@ -42,7 +42,7 @@
         android:layout_height="20dp"
         android:layout_above="@android:id/list"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="27dp"
+        android:layout_marginRight="47dp"
         android:background="#9A9494"
         android:text="@string/updatedHeader"
         android:textColor="#000000"

@@ -110,23 +110,28 @@ public class MainActivity extends Activity implements OnClickListener {
 			startPopup(R.layout.update_popup);
 			break;
 		case R.id.updateInPopup:
-			anItem = new Items(updateItemName.getText().toString(),
-					Integer.parseInt(updateItemAmount.getText().toString()));
-			if (itemsDb.updateItem(anItem) > 0) {
-				Toast.makeText(getApplicationContext(), "Update Successful.",
-						Toast.LENGTH_SHORT).show();
+			if (!updateItemName.getText().toString().isEmpty()
+					&& !updateItemAmount.getText().toString().isEmpty()) {
+				anItem = new Items(updateItemName.getText().toString(),
+						Integer.parseInt(updateItemAmount.getText().toString()));
+				if (itemsDb.updateItem(anItem) > 0) {
+					Toast.makeText(getApplicationContext(),
+							"Update Successful.", Toast.LENGTH_SHORT).show();
+				} else {
+					Toast.makeText(getApplicationContext(),
+							"Item Does Not Exist.", Toast.LENGTH_SHORT).show();
+				}
+				updateItemName.setText("");
+				updateItemAmount.setText("");
 			} else {
-				Toast.makeText(getApplicationContext(), "Item Does Not Exist.",
-						Toast.LENGTH_SHORT).show();
+				Toast.makeText(getApplicationContext(),
+						"Missing item name or quantity.", Toast.LENGTH_LONG).show();
 			}
-			updateItemName.setText("");
-			updateItemAmount.setText("");
 			break;
 		default:
 			throw new RuntimeException("Invalid button");
 		}
 	}
-
 
 	private void startPopup(int layoutType) {
 		try {
@@ -158,18 +163,19 @@ public class MainActivity extends Activity implements OnClickListener {
 						.findViewById(R.id.updateInPopup);
 				updateInPopup.setOnClickListener(this);
 			}
-			
-			 popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
-			      @Override
-			      public void onDismiss() {
-			    	  layout_MainMenu.getForeground().setAlpha(0);
-			      }
-			  });
+
+			popupWindow
+					.setOnDismissListener(new PopupWindow.OnDismissListener() {
+						@Override
+						public void onDismiss() {
+							layout_MainMenu.getForeground().setAlpha(0);
+						}
+					});
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	@Override

@@ -42,7 +42,7 @@
         android:layout_height="20dp"
         android:layout_above="@android:id/list"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="51dp"
+        android:layout_marginRight="67dp"
         android:background="#9A9494"
         android:text="@string/updatedHeader"
         android:textColor="#000000"

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.inventory"
-    android:versionCode="1"
+    android:versionCode="2"
     android:versionName="1.0" >
 
     <uses-sdk
@@ -47,7 +47,7 @@
 
         <provider
             android:name="com.inventory.MyContentProvider"
-            android:authorities="com.example.inventory.MyContentProvider" />
+            android:authorities="com.inventory.MyContentProvider" />
     </application>
 
 </manifest>
