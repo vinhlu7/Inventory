@@ -14,7 +14,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.inventory.MainActivity"
+            android:name="com.inventory.activity.InventoryActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.NoTitle" >
             <intent-filter>
@@ -23,7 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.inventory.SearchableActivity" >
+        <activity android:name="com.inventory.activity.SearchableActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
@@ -33,20 +33,20 @@
                 android:resource="@xml/searchable" />
         </activity>
         <activity
-            android:name="com.inventory.AddItemActivity"
+            android:name="com.inventory.activity.AddItemActivity"
             android:label="@string/app_name" 
             android:theme="@style/Theme.NoTitle"/>
         <activity
-            android:name="com.inventory.ViewItemActivity"
+            android:name="com.inventory.activity.ViewItemActivity"
             android:label="@string/app_name" 
             android:theme="@style/Theme.NoTitle" 
             />
         <activity
-            android:name="com.inventory.AndroidDatabaseManager"
+            android:name="com.inventory.activity.AndroidDatabaseManager"
             android:label="@string/app_name" />
 
         <provider
-            android:name="com.inventory.MyContentProvider"
+            android:name="com.inventory.provider.MyContentProvider"
             android:authorities="com.inventory.MyContentProvider" />
     </application>
 

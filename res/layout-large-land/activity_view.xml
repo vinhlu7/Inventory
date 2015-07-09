@@ -25,26 +25,25 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/headerQuantity"
-        android:layout_width="70dip"
+        android:id="@+id/headerUpdated"
+        android:layout_width="100dip"
         android:layout_height="20dp"
-        android:layout_above="@android:id/list"
-        android:layout_marginLeft="228dp"
-        android:layout_toRightOf="@+id/header"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="26dp"
         android:background="#9A9494"
-        android:text="@string/quantityHeader"
+        android:text="@string/updatedHeader"
         android:textColor="#000000"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/headerUpdated"
-        android:layout_width="100dip"
+        android:id="@+id/headerQuantity"
+        android:layout_width="70dip"
         android:layout_height="20dp"
-        android:layout_above="@android:id/list"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="67dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
         android:background="#9A9494"
-        android:text="@string/updatedHeader"
+        android:text="@string/quantityHeader"
         android:textColor="#000000"
         android:textStyle="bold" />
 

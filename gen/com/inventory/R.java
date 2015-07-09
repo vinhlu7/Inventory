@@ -26,7 +26,7 @@ public final class R {
         public static final int shape_window_dim=0x7f020001;
     }
     public static final class id {
-        public static final int action_settings=0x7f090018;
+        public static final int action_settings=0x7f090017;
         public static final int addButton=0x7f090007;
         public static final int addComplete=0x7f090004;
         public static final int deleteButton=0x7f090008;
@@ -36,7 +36,6 @@ public final class R {
         public static final int headerQuantity=0x7f09000d;
         public static final int headerUpdated=0x7f09000c;
         public static final int mainmenu=0x7f090005;
-        public static final int myid1=0x7f090017;
         public static final int newItemAmount=0x7f090003;
         public static final int newItemName=0x7f090001;
         public static final int popup_element=0x7f09000e;
@@ -83,11 +82,13 @@ public final class R {
         /** 
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+
     
 
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
+
         
 
         Base application theme for API 11+. This theme completely replaces
