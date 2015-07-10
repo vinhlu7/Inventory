@@ -1,6 +1,5 @@
 package com.inventory.activity;
 
-import com.inventory.R;
 import com.inventory.data.Items;
 import com.inventory.provider.InventoryDatabaseHelper;
 

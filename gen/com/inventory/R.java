@@ -22,11 +22,12 @@ public final class R {
         public static final int activity_vertical_margin=0x7f050001;
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
-        public static final int shape_window_dim=0x7f020001;
+        public static final int ic_launcher_web2=0x7f020000;
+        public static final int ic_launcherweb=0x7f020001;
+        public static final int shape_window_dim=0x7f020002;
     }
     public static final class id {
-        public static final int action_settings=0x7f090017;
+        public static final int action_settings=0x7f090018;
         public static final int addButton=0x7f090007;
         public static final int addComplete=0x7f090004;
         public static final int deleteButton=0x7f090008;
@@ -35,6 +36,7 @@ public final class R {
         public static final int header=0x7f09000b;
         public static final int headerQuantity=0x7f09000d;
         public static final int headerUpdated=0x7f09000c;
+        public static final int imageView1=0x7f090011;
         public static final int mainmenu=0x7f090005;
         public static final int newItemAmount=0x7f090003;
         public static final int newItemName=0x7f090001;
@@ -42,13 +44,13 @@ public final class R {
         public static final int search=0x7f090006;
         public static final int textView1=0x7f090000;
         public static final int textView2=0x7f090002;
-        public static final int textViewName=0x7f090014;
-        public static final int textViewQuantity=0x7f090015;
-        public static final int textViewUpdate=0x7f090016;
+        public static final int textViewName=0x7f090015;
+        public static final int textViewQuantity=0x7f090016;
+        public static final int textViewUpdate=0x7f090017;
         public static final int updateButton=0x7f09000a;
-        public static final int updateInPopup=0x7f090013;
-        public static final int updateItemAmount=0x7f090012;
-        public static final int updateItemName=0x7f090011;
+        public static final int updateInPopup=0x7f090014;
+        public static final int updateItemAmount=0x7f090013;
+        public static final int updateItemName=0x7f090012;
         public static final int viewTest=0x7f090009;
     }
     public static final class layout {
@@ -56,8 +58,9 @@ public final class R {
         public static final int activity_main=0x7f030001;
         public static final int activity_view=0x7f030002;
         public static final int delete_popup=0x7f030003;
-        public static final int update_popup=0x7f030004;
-        public static final int view_item=0x7f030005;
+        public static final int splash_screen=0x7f030004;
+        public static final int update_popup=0x7f030005;
+        public static final int view_item=0x7f030006;
     }
     public static final class menu {
         public static final int main=0x7f080000;

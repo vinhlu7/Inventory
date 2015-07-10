@@ -3,8 +3,6 @@ package com.inventory.activity;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import com.inventory.R;
-
 import android.app.ListActivity;
 import android.database.Cursor;
 import android.net.Uri;
@@ -21,7 +19,7 @@ public class ViewItemActivity extends ListActivity implements
 	TextView resultView = null;
 	CursorLoader cursorLoader;
 
-	private static final String AUTHORITY = "com.inventory.MyContentProvider";
+	private static final String AUTHORITY = "com.inventory.provider.MyContentProvider";
 	private static final String TABLE_ITEMS = "items";
 
 	ListView listView;

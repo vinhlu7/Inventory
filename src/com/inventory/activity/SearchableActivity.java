@@ -1,7 +1,5 @@
 package com.inventory.activity;
 
-import com.inventory.R;
-
 import android.app.ListActivity;
 import android.app.SearchManager;
 import android.content.Intent;

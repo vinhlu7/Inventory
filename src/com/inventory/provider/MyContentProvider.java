@@ -14,7 +14,7 @@ public class MyContentProvider extends ContentProvider {
 
 	private InventoryDatabaseHelper myDB;
 
-	private static final String AUTHORITY = "com.inventory.MyContentProvider";
+	private static final String AUTHORITY = "com.inventory.provider.MyContentProvider";
 	private static final String TABLE_ITEMS = "items";
 	public static final String COLUMN_ITEMS_ID = "_id";
 	
