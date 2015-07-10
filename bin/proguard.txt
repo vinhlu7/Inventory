@@ -1,0 +1,21 @@
+# view AndroidManifest.xml #generated:42
+-keep class com.inventory.activity.AddItemActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:51
+-keep class com.inventory.activity.AndroidDatabaseManager { <init>(...); }
+
+# view AndroidManifest.xml #generated:16
+-keep class com.inventory.activity.InventoryActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:33
+-keep class com.inventory.activity.SearchableActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:21
+-keep class com.inventory.activity.SplashScreen { <init>(...); }
+
+# view AndroidManifest.xml #generated:46
+-keep class com.inventory.activity.ViewItemActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:55
+-keep class com.inventory.provider.MyContentProvider { <init>(...); }
+
