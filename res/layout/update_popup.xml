@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/popup_element"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#444444"
+    android:orientation="horizontal"
+    android:padding="10sp" >
+
+    <EditText
+        android:id="@+id/updateItemName"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="99dp"
+        android:ems="10"
+        android:hint="@string/updateItem"
+        android:inputType="textCapWords"
+        android:singleLine="true" />
+	<!-- 
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/updateItemName"
+        android:layout_below="@+id/updateItemName"
+        android:layout_marginRight="66dp"
+        android:layout_marginTop="102dp"
+        android:text="Back" />
+	 -->
+    <EditText
+        android:id="@+id/updateItemAmount"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/updateItemName"
+        android:ems="10"
+        android:hint="@string/updateItemAmount"
+        android:inputType="number"
+        android:singleLine="true" >
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/updateInPopup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/updateItemAmount"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="42dp"
+        android:text="@string/Update" />
+
+</RelativeLayout>
