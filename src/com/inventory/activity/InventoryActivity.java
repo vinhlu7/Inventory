@@ -127,7 +127,11 @@ public class InventoryActivity extends Activity implements OnClickListener {
 					.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 			View layout = inflater.inflate(layoutType,
 					(ViewGroup) findViewById(R.id.popup_element));
-			popupWindow = new PopupWindow(layout, 600, 650, true);
+			popupWindow = new PopupWindow(layout, 
+					ViewGroup.LayoutParams.WRAP_CONTENT, 
+					ViewGroup.LayoutParams.WRAP_CONTENT, 
+					true);
+			
 			popupWindow.setOutsideTouchable(true);
 			popupWindow.setBackgroundDrawable(new BitmapDrawable(null, ""));
 			popupWindow.showAtLocation(layout, Gravity.CENTER, 0, 0);
